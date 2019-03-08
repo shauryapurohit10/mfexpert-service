@@ -176,3 +176,26 @@ exports.loginUser = async (payload) => {
       });
   })
 };
+
+
+/**
+ * addmember into the addmember table
+ *
+ * @param  {String} username
+ */
+
+exports.addmember = async (payload) => {
+  dbconnection = GetDBConnection();
+  return new Promise(async (resolve, reject) => {
+    dbconnection("addmember").insert(payload)
+      .then(success => {
+        resolve("successfully inserted.");
+      })
+      .catch(error => {
+        reject(error);
+      })
+      .finally(() => {
+        GetDBDisconnection(dbconnection);
+      });
+  })
+};
