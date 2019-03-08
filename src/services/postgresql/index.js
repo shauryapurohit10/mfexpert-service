@@ -3,6 +3,8 @@ const {
   getUsers,
   updateuser,
   deleteUser,
+  addmember,
+  loginUser,
 
   getMembers,
   loginUser,
@@ -16,6 +18,8 @@ module.exports = {
   getUsers,
   updateuser,
   deleteUser,
+  addmember,
+  loginUser,
   getMembers,
   loginUser,
   kycUser,

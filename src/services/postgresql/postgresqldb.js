@@ -178,21 +178,43 @@ exports.loginUser = async (payload) => {
 };
 
 
+/**
+ * addmember into the addmember table
+ *
+ * @param  {String} username
+ */
+
+exports.addmember = async (payload) => {
+  dbconnection = GetDBConnection();
+  return new Promise(async (resolve, reject) => {
+    dbconnection("addmember").insert(payload)
+      .then(success => {
+        resolve("successfully inserted.");
+      })
+      .catch(error => {
+        reject(error);
+      })
+      .finally(() => {
+        GetDBDisconnection(dbconnection);
+      });
+  })
+};
+
 
 /**
- * create kycuser into the kyc table
+ * create address into the address table
  *
  * 
  * 
  */
 
-exports.kycUser = async (payload) => {
+exports.addressUser = async (payload) => {
 
   dbconnection= undefined;
   dbconnection = GetDBConnection();
 
   return new Promise(async (resolve, reject) => {
-    dbconnection("kyc").insert(payload)
+    dbconnection("address").insert(payload)
       .then(success => {
         resolve(success);
       })
@@ -213,13 +235,13 @@ exports.kycUser = async (payload) => {
  * 
  */
 
-exports.addressUser = async (payload) => {
+exports.kycUser = async (payload) => {
 
   dbconnection= undefined;
   dbconnection = GetDBConnection();
 
   return new Promise(async (resolve, reject) => {
-    dbconnection("address").insert(payload)
+    dbconnection("kyc").insert(payload)
       .then(success => {
         resolve(success);
       })
