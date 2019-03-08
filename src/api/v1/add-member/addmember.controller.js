@@ -23,7 +23,7 @@ exports.addmember = async (req, res, next) => {
         gender: req.body.gender,
         mstatus: req.body.mstatus,
         alname: req.body.alname,
-        mnumber: req.body.mnumber
+        monumber: req.body.monumber
     }
     postgresql.addmember(params).then((data) => {
       const jsonResponse = Response(httpStatus.OK, data);

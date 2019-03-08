@@ -5,9 +5,7 @@ const {
   deleteUser,
   addmember,
   loginUser,
-
   getMembers,
-  loginUser,
   kycUser,
   addressUser
 
@@ -19,9 +17,9 @@ module.exports = {
   updateuser,
   deleteUser,
   addmember,
-  loginUser,
   getMembers,
   loginUser,
   kycUser,
   addressUser
 };
+

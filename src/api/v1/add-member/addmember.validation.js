@@ -9,7 +9,7 @@ exports.addmember = {
     gender: Joi.string().required(),
     mstatus: Joi.string().required(),
     alname: Joi.string().required(),
-    mnumber: Joi.string().required()
+    monumber: Joi.string().required()
 
   })
 };

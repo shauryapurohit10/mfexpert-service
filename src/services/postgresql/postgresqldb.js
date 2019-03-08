@@ -185,6 +185,7 @@ exports.loginUser = async (payload) => {
  */
 
 exports.addmember = async (payload) => {
+  dbconnection = undefined; 
   dbconnection = GetDBConnection();
   return new Promise(async (resolve, reject) => {
     dbconnection("addmember").insert(payload)
@@ -253,3 +254,4 @@ exports.kycUser = async (payload) => {
       });
   })
 };
+
