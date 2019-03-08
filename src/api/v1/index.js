@@ -9,6 +9,10 @@ const deleteUserRoute = require('./delete-user');
 
 const membersRoute = require('./members');
 const loginuserRoute = require('./login-user');
+const kycuserRoute = require('./kyc-user');
+const addressuserRoute = require('./address-user');
+
+
 
 
 /**
@@ -22,7 +26,8 @@ router.use('/updateuser', updateUserRoute);
 router.use('/deleteuser', deleteUserRoute);
 router.use('/members', membersRoute);
 router.use('/loginusers', loginuserRoute);
-
+router.use('/kycusers', kycuserRoute);
+router.use('/addressusers', addressuserRoute);
 
 
 
