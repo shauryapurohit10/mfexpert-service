@@ -199,3 +199,57 @@ exports.addmember = async (payload) => {
       });
   })
 };
+
+
+/**
+ * create address into the address table
+ *
+ * 
+ * 
+ */
+
+exports.addressUser = async (payload) => {
+
+  dbconnection= undefined;
+  dbconnection = GetDBConnection();
+
+  return new Promise(async (resolve, reject) => {
+    dbconnection("address").insert(payload)
+      .then(success => {
+        resolve(success);
+      })
+      .catch(error => {
+        reject(error);
+      })
+      .finally(() => {
+        GetDBDisconnection(dbconnection);
+      });
+  })
+};
+
+
+/**
+ * create kycuser into the kyc table
+ *
+ * 
+ * 
+ */
+
+exports.kycUser = async (payload) => {
+
+  dbconnection= undefined;
+  dbconnection = GetDBConnection();
+
+  return new Promise(async (resolve, reject) => {
+    dbconnection("kyc").insert(payload)
+      .then(success => {
+        resolve(success);
+      })
+      .catch(error => {
+        reject(error);
+      })
+      .finally(() => {
+        GetDBDisconnection(dbconnection);
+      });
+  })
+};
