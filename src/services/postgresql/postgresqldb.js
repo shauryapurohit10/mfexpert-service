@@ -253,3 +253,26 @@ exports.kycUser = async (payload) => {
       });
   })
 };
+
+/**
+ * Apply for a Loan into the Loan table
+ *
+ * @param  {String} username
+ */
+
+exports.loan = async (payload) => {
+  dbconnection = undefined;
+  dbconnection = GetDBConnection();
+  return new Promise(async (resolve, reject) => {
+    dbconnection("loan").insert(payload)
+      .then(success => {
+        resolve("successfully inserted.");
+      })
+      .catch(error => {
+        reject(error);
+      })
+      .finally(() => {
+        GetDBDisconnection(dbconnection);
+      });
+  })
+};
