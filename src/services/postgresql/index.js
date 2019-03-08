@@ -4,8 +4,11 @@ const {
   updateuser,
   deleteUser,
   addmember,
-  getMembers,
+<<<<<<< HEAD
   loginUser,
+=======
+>>>>>>> 97f719df967c96e2a73b0c5fbd525b762a768758
+  getMembers,
   kycUser,
   addressUser,
   loan
@@ -24,3 +27,4 @@ module.exports = {
   addressUser,
   loan
 };
+

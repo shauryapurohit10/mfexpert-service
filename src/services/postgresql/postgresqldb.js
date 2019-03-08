@@ -185,6 +185,7 @@ exports.loginUser = async (payload) => {
  */
 
 exports.addmember = async (payload) => {
+  dbconnection = undefined; 
   dbconnection = GetDBConnection();
   return new Promise(async (resolve, reject) => {
     dbconnection("addmember").insert(payload)
@@ -254,6 +255,8 @@ exports.kycUser = async (payload) => {
   })
 };
 
+<<<<<<< HEAD
+=======
 /**
  * Apply for a Loan into the Loan table
  *
@@ -276,3 +279,4 @@ exports.loan = async (payload) => {
       });
   })
 };
+>>>>>>> 97f719df967c96e2a73b0c5fbd525b762a768758
