@@ -26,6 +26,7 @@ function GetDBDisconnection(_knex) {
   if (_knex !== null) {
     _knex.destroy();
   }
+  dbconnection = undefined;
 }
 
 
@@ -255,8 +256,6 @@ exports.kycUser = async (payload) => {
   })
 };
 
-<<<<<<< HEAD
-=======
 /**
  * Apply for a Loan into the Loan table
  *
@@ -279,4 +278,39 @@ exports.loan = async (payload) => {
       });
   })
 };
->>>>>>> 97f719df967c96e2a73b0c5fbd525b762a768758
+
+// loanApprovalUser
+exports.loanApprovalUser = async (payload) => {
+    dbconnection = undefined;
+    var dbconnection = GetDBConnection();
+    return new Promise(async (resolve, reject) => {
+    dbconnection("loan").select('application_code', 'member_code','member_name','loan_amount')
+        .then(success => {
+          resolve(success);
+        })
+        .catch(error => {
+          reject(error);
+        })
+        .finally(() => {
+          GetDBDisconnection(dbconnection);
+        });
+  })
+}
+
+// loanEditUser
+exports.loanEditUser = async (payload) => {
+  dbconnection = undefined;
+  var dbconnection = GetDBConnection();
+  return new Promise(async (resolve, reject) => {
+  dbconnection("loan").select('loan_amount')
+      .then(success => {
+        resolve(success);
+      })
+      .catch(error => {
+        reject(error);
+      })
+      .finally(() => {
+        GetDBDisconnection(dbconnection);
+      });
+})
+}
