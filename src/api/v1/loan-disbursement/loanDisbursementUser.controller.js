@@ -14,17 +14,17 @@ const {
  * @public
  * 
  */
-exports.loanEditUser = async (req, res, next) => {
+exports.loanDisbursementUser = async (req, res, next) => {
   try {
     const params = req.body
-    postgresql.loanEditUser(params).then((data) => {
+    postgresql.loanDisbursementUser(params).then((data) => {
       const jsonResponse = Response(httpStatus.OK, data);
       res.status(httpStatus.OK);
       return res.json(jsonResponse);
     }).catch((error) => {
       const errorMsg = generateError(
-        'loanEditUser',
-        getErrorCode(routes.loanEditlUser, services.sample, codes.loanEditlUser),
+        'loanDisbursementUser',
+        getErrorCode(routes.loanDisbursementUser, services.sample, codes.loanDisbursementUser),
         error.message,
         {
         }

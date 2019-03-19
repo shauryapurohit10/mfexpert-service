@@ -6,6 +6,6 @@ const validation = require('./loanEditUser.validation');
 const router = express.Router();
 
 router.route('/')
-  .get(validate(validation.loanEditUser), controller.loanEditUser);
+  .post(validate(validation.loanEditUser), controller.loanEditUser);
 
 module.exports = router;
