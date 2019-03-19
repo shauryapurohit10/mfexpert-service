@@ -305,7 +305,11 @@ exports.loanEditUser = async (payload) => {
   
   return new Promise(async (resolve, reject) => {
     dbconnection("loan").where('id', payload.id)
+<<<<<<< HEAD
     .update({'loan_amount': payload.loan_amount})
+=======
+      .update({'loan_amount': payload.loan_amount})
+>>>>>>> 17eea00a5aeb5e12ec5f1fb8b43ae7d794d16588
       .then(success => {
         resolve(success);
       })
