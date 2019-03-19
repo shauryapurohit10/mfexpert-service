@@ -5,7 +5,7 @@ const {
   deleteUser,
   addmember,
   getMembers,
-  loginUser,
+  
   kycUser,
   addressUser,
   loan,
