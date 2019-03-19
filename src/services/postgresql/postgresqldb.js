@@ -26,6 +26,7 @@ function GetDBDisconnection(_knex) {
   if (_knex !== null) {
     _knex.destroy();
   }
+  
 }
 
 
@@ -73,34 +74,7 @@ exports.getUsers = async (payload) => {
   })
 };
 
-/**
- * update user into the users table
- *
- * @param  {String} username
- * @param {integer} id
- */
 
-exports.updateuser = async (payload) => {
- 
-  dbconnection = GetDBConnection();
-  return new Promise(async (resolve, reject) => {
-    dbconnection("users").where('id', payload.id)
-      .update({ 'username': payload.username, 'password': payload.password })
-      .then(success => {
-        if (success) {
-          resolve("updated sucessfully.");
-        } else {
-          resolve("No records found.");
-        }
-      })
-      .catch(error => {
-        reject(error);
-      })
-      .finally(() => {
-        GetDBDisconnection(dbconnection);
-      });
-  })
-};
 
 
 /**
@@ -153,7 +127,7 @@ exports.getMembers = async (payload) => {
 
 
 /**
- * create user into the users table
+ * login user into the users table
  *
  * @param  {String} username
  */
