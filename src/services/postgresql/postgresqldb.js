@@ -301,8 +301,10 @@ exports.loanApprovalUser = async (payload) => {
 exports.loanEditUser = async (payload) => {
   dbconnection = undefined;
   var dbconnection = GetDBConnection();
+  
   return new Promise(async (resolve, reject) => {
-  dbconnection("loan").select('loan_amount')
+    dbconnection("loan").where('id', payload.id)
+      .update({'loan_amount': payload.loan_amount})
       .then(success => {
         resolve(success);
       })
