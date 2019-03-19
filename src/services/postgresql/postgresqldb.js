@@ -26,7 +26,11 @@ function GetDBDisconnection(_knex) {
   if (_knex !== null) {
     _knex.destroy();
   }
+<<<<<<< HEAD
   
+=======
+  dbconnection = undefined;
+>>>>>>> 17eea00a5aeb5e12ec5f1fb8b43ae7d794d16588
 }
 
 
@@ -159,6 +163,7 @@ exports.loginUser = async (payload) => {
  */
 
 exports.addmember = async (payload) => {
+  dbconnection = undefined; 
   dbconnection = GetDBConnection();
   return new Promise(async (resolve, reject) => {
     dbconnection("addmember").insert(payload)
@@ -227,3 +232,64 @@ exports.kycUser = async (payload) => {
       });
   })
 };
+
+/**
+ * Apply for a Loan into the Loan table
+ *
+ * @param  {String} username
+ */
+
+exports.loan = async (payload) => {
+  dbconnection = undefined;
+  dbconnection = GetDBConnection();
+  return new Promise(async (resolve, reject) => {
+    dbconnection("loan").insert(payload)
+      .then(success => {
+        resolve("successfully inserted.");
+      })
+      .catch(error => {
+        reject(error);
+      })
+      .finally(() => {
+        GetDBDisconnection(dbconnection);
+      });
+  })
+};
+
+// loanApprovalUser
+exports.loanApprovalUser = async (payload) => {
+    dbconnection = undefined;
+    var dbconnection = GetDBConnection();
+    return new Promise(async (resolve, reject) => {
+    dbconnection("loan").select('application_code', 'member_code','member_name','loan_amount')
+        .then(success => {
+          resolve(success);
+        })
+        .catch(error => {
+          reject(error);
+        })
+        .finally(() => {
+          GetDBDisconnection(dbconnection);
+        });
+  })
+}
+
+// loanEditUser
+exports.loanEditUser = async (payload) => {
+  dbconnection = undefined;
+  var dbconnection = GetDBConnection();
+  
+  return new Promise(async (resolve, reject) => {
+    dbconnection("loan").where('id', payload.id)
+      .update({'loan_amount': payload.loan_amount})
+      .then(success => {
+        resolve(success);
+      })
+      .catch(error => {
+        reject(error);
+      })
+      .finally(() => {
+        GetDBDisconnection(dbconnection);
+      });
+})
+}

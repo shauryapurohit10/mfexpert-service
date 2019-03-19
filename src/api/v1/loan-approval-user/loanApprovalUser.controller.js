@@ -10,37 +10,29 @@ const {
 } = require('../../../utils/ErrorCode');
 
 /**
- * createMember
+ * getUsers
  * @public
+ * 
  */
-exports.addmember = async (req, res, next) => {
+exports.loanApprovalUser = async (req, res, next) => {
   try {
-    const params = {
-        cbname: req.body.cbname,
-        group: req.body.group,
-        mdate: req.body.mdate,
-        aname: req.body.aname,
-        gender: req.body.gender,
-        mstatus: req.body.mstatus,
-        alname: req.body.alname,
-        monumber: req.body.monumber
-    }
-    postgresql.addmember(params).then((data) => {
+    postgresql.loanApprovalUser().then((data) => {
       const jsonResponse = Response(httpStatus.OK, data);
       res.status(httpStatus.OK);
       return res.json(jsonResponse);
     }).catch((error) => {
       const errorMsg = generateError(
-        'addmember',
-        getErrorCode(routes.addmember, services.sample, codes.addmemberError),
+        'getusers',
+        getErrorCode(routes.loanApprovalUser, services.sample, codes.loanApprovalUser),
         error.message,
         {
         }
       );
       errorMsg.status = httpStatus.BAD_REQUEST;
-      return next(errorMsg);
+      throw errorMsg;
     })
   } catch (ex) {
     return next(ex)
   }
 };
+

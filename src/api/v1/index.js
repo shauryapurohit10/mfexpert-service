@@ -9,6 +9,9 @@ const addmemberRoute = require('./add-member');
 const loginuserRoute = require('./login-user');
 const kycuserRoute = require('./kyc-user');
 const addressuserRoute = require('./address-user');
+const loanRoute = require('./loan');
+const loanapprovaluserRoute = require('./loan-approval-user');
+const loanedituserRoute = require('./loan-edit');
 
 
 
@@ -25,7 +28,9 @@ router.use('/addmember' , addmemberRoute);
 router.use('/loginusers', loginuserRoute);
 router.use('/kycusers', kycuserRoute);
 router.use('/addressusers', addressuserRoute);
-
+router.use('/loan', loanRoute);
+router.use('/loanapprovalusers', loanapprovaluserRoute);
+router.use('/loaneditusers', loanedituserRoute);
 
 
 module.exports = router;

@@ -10,29 +10,21 @@ const {
 } = require('../../../utils/ErrorCode');
 
 /**
- * createMember
+ * getUsers
  * @public
+ * 
  */
-exports.addmember = async (req, res, next) => {
+exports.loanEditUser = async (req, res, next) => {
   try {
-    const params = {
-        cbname: req.body.cbname,
-        group: req.body.group,
-        mdate: req.body.mdate,
-        aname: req.body.aname,
-        gender: req.body.gender,
-        mstatus: req.body.mstatus,
-        alname: req.body.alname,
-        monumber: req.body.monumber
-    }
-    postgresql.addmember(params).then((data) => {
+    const params = req.body
+    postgresql.loanEditUser(params).then((data) => {
       const jsonResponse = Response(httpStatus.OK, data);
       res.status(httpStatus.OK);
       return res.json(jsonResponse);
     }).catch((error) => {
       const errorMsg = generateError(
-        'addmember',
-        getErrorCode(routes.addmember, services.sample, codes.addmemberError),
+        'loanEditUser',
+        getErrorCode(routes.loanEditlUser, services.sample, codes.loanEditlUser),
         error.message,
         {
         }
@@ -44,3 +36,4 @@ exports.addmember = async (req, res, next) => {
     return next(ex)
   }
 };
+
