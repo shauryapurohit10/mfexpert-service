@@ -22,7 +22,7 @@ exports.loanApprovalUser = async (req, res, next) => {
       return res.json(jsonResponse);
     }).catch((error) => {
       const errorMsg = generateError(
-        'getusers',
+        'loanApprovalUser',
         getErrorCode(routes.loanApprovalUser, services.sample, codes.loanApprovalUser),
         error.message,
         {

@@ -16,7 +16,8 @@ const {
  */
 exports.loanEditUser = async (req, res, next) => {
   try {
-    postgresql.loanEditUser().then((data) => {
+    const params = req.body
+    postgresql.loanEditUser(params).then((data) => {
       const jsonResponse = Response(httpStatus.OK, data);
       res.status(httpStatus.OK);
       return res.json(jsonResponse);
