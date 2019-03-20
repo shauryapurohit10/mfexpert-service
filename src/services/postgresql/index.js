@@ -5,12 +5,13 @@ const {
   deleteUser,
   addmember,
   getMembers,
-  
+  loginUser,
   kycUser,
   addressUser,
   loan,
   loanApprovalUser,
-  loanEditUser
+  loanEditUser,
+  loanRejectUser
 
 } = require('./postgresqldb');
 
@@ -26,6 +27,7 @@ module.exports = {
   addressUser,
   loan,
   loanApprovalUser,
-  loanEditUser
+  loanEditUser,
+  loanRejectUser
 };
 
