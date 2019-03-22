@@ -16,8 +16,7 @@ const {
  */
 exports.loanDisbursementUser = async (req, res, next) => {
   try {
-    const params = req.body
-    postgresql.loanDisbursementUser(params).then((data) => {
+    postgresql.loanDisbursementUser().then((data) => {
       const jsonResponse = Response(httpStatus.OK, data);
       res.status(httpStatus.OK);
       return res.json(jsonResponse);
