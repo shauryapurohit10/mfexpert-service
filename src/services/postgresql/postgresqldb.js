@@ -74,34 +74,7 @@ exports.getUsers = async (payload) => {
   })
 };
 
-/**
- * update user into the users table
- *
- * @param  {String} username
- * @param {integer} id
- */
 
-exports.updateuser = async (payload) => {
- 
-  dbconnection = GetDBConnection();
-  return new Promise(async (resolve, reject) => {
-    dbconnection("users").where('id', payload.id)
-      .update({ 'username': payload.username, 'password': payload.password })
-      .then(success => {
-        if (success) {
-          resolve("updated sucessfully.");
-        } else {
-          resolve("No records found.");
-        }
-      })
-      .catch(error => {
-        reject(error);
-      })
-      .finally(() => {
-        GetDBDisconnection(dbconnection);
-      });
-  })
-};
 
 
 /**
@@ -154,7 +127,7 @@ exports.getMembers = async (payload) => {
 
 
 /**
- * create user into the users table
+ * login user into the users table
  *
  * @param  {String} username
  */
@@ -285,7 +258,11 @@ exports.loanApprovalUser = async (payload) => {
     var dbconnection = GetDBConnection();
 
     return new Promise(async (resolve, reject) => {
+<<<<<<< HEAD
     dbconnection("loan").select('id','application_code', 'member_code','member_name','loan_amount').orderBy('id', 'asc')
+=======
+    dbconnection("loan").select('id','application_code','member_code','member_name','loan_amount','approve_status','reject_status').orderBy('id','asc')
+>>>>>>> 83c154cf0a485e347d0be37ef2442cedfde82fd2
         .then(success => {
           resolve(success);
         })
@@ -305,7 +282,7 @@ exports.loanEditUser = async (payload) => {
   
   return new Promise(async (resolve, reject) => {
     dbconnection("loan").where('id', payload.id)
-      .update({'loan_amount': payload.loan_amount})
+      .update({'loan_amount': payload.loan_amount, 'approve_status': 1})
       .then(success => {
         resolve(success);
       })
@@ -317,3 +294,43 @@ exports.loanEditUser = async (payload) => {
       });
 })
 }
+
+// loanEditUser
+exports.loanRejectUser = async (payload) => {
+  dbconnection = undefined;
+  var dbconnection = GetDBConnection();
+  
+  return new Promise(async (resolve, reject) => {
+    dbconnection("loan").where('id', payload.id)
+      .update({'reject_status': 1})
+      .then(success => {
+        resolve(success);
+      })
+      .catch(error => {
+        reject(error);
+      })
+      .finally(() => {
+        GetDBDisconnection(dbconnection);
+      });
+})
+}
+
+// loanApprovalUser
+exports.loanDisbursementUser = async (payload) => {
+  dbconnection = undefined;
+  var dbconnection = GetDBConnection();
+  return new Promise(async (resolve, reject) => {
+  dbconnection("loan").select('id','member_code','loan_amount','member_name').orderBy('id','asc')
+      .where({'approve_status':1})
+      .then(success => {
+        resolve(success);
+      })
+      .catch(error => {
+        reject(error);
+      })
+      .finally(() => {
+        GetDBDisconnection(dbconnection);
+      });
+})
+}
+

@@ -10,7 +10,7 @@ const {
 } = require('../../../utils/ErrorCode');
 
 /**
- * createUser
+ * loginUser
  * @public
  */
 exports.loginUser = async (req, res, next) => {

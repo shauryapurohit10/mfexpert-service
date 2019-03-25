@@ -12,6 +12,8 @@ const addressuserRoute = require('./address-user');
 const loanRoute = require('./loan');
 const loanapprovaluserRoute = require('./loan-approval-user');
 const loanedituserRoute = require('./loan-edit');
+const loanrejectuserRoute = require('./loan-reject');
+const loandisbursementuserRoute = require('./loan-disbursement');
 
 
 
@@ -31,6 +33,8 @@ router.use('/addressusers', addressuserRoute);
 router.use('/loan', loanRoute);
 router.use('/loanapprovalusers', loanapprovaluserRoute);
 router.use('/loaneditusers', loanedituserRoute);
+router.use('/loanrejectusers', loanrejectuserRoute);
+router.use('/loandisbursementusers', loandisbursementuserRoute);
 
 
 module.exports = router;
