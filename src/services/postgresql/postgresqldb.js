@@ -285,7 +285,7 @@ exports.loanApprovalUser = async (payload) => {
     var dbconnection = GetDBConnection();
 
     return new Promise(async (resolve, reject) => {
-    dbconnection("loan").select('id','application_code', 'member_code','member_name','loan_amount')
+    dbconnection("loan").select('id','application_code', 'member_code','member_name','loan_amount').orderBy('id', 'asc')
         .then(success => {
           resolve(success);
         })
@@ -305,11 +305,7 @@ exports.loanEditUser = async (payload) => {
   
   return new Promise(async (resolve, reject) => {
     dbconnection("loan").where('id', payload.id)
-<<<<<<< HEAD
-    .update({'loan_amount': payload.loan_amount})
-=======
       .update({'loan_amount': payload.loan_amount})
->>>>>>> 17eea00a5aeb5e12ec5f1fb8b43ae7d794d16588
       .then(success => {
         resolve(success);
       })
