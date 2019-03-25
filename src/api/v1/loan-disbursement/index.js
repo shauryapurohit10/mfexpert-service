@@ -6,6 +6,6 @@ const validation = require('./loanDisbursementUser.validation');
 const router = express.Router();
 
 router.route('/')
-  .post(validate(validation.loanDisbursementUser), controller.loanDisbursementUser);
+  .get(validate(validation.loanDisbursementUser), controller.loanDisbursementUser);
 
 module.exports = router;

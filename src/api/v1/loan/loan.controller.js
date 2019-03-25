@@ -24,7 +24,9 @@ exports.loan = async (req, res, next) => {
       expected_disbursment_date: req.body.expected_disbursment_date,
       loan_amount: req.body.loan_amount,
       purpose: req.body.purpose,
-      rate_of_interest: req.body.rate_of_interest
+      rate_of_interest: req.body.rate_of_interest,
+      approve_status: req.body.approve_status,
+      reject_status: req.body.reject_status
     }
     postgresql.loan(params).then((data) => {
       const jsonResponse = Response(httpStatus.OK, data);
