@@ -10,6 +10,9 @@ exports.loan = {
     expected_disbursment_date: Joi.string().required(),
     loan_amount: Joi.number().integer().required(),
     purpose: Joi.string().required(),
-    rate_of_interest: Joi.number().integer().required()
+    rate_of_interest: Joi.number().integer().required(),
+    approve_status: Joi.number().integer().required(),
+    reject_status: Joi.number().integer().required()
+
   })
 };
