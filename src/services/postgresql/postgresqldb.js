@@ -26,11 +26,7 @@ function GetDBDisconnection(_knex) {
   if (_knex !== null) {
     _knex.destroy();
   }
-<<<<<<< HEAD
-  
-=======
   dbconnection = undefined;
->>>>>>> 17eea00a5aeb5e12ec5f1fb8b43ae7d794d16588
 }
 
 
@@ -261,7 +257,7 @@ exports.loanApprovalUser = async (payload) => {
     dbconnection = undefined;
     var dbconnection = GetDBConnection();
     return new Promise(async (resolve, reject) => {
-    dbconnection("loan").select('application_code', 'member_code','member_name','loan_amount')
+    dbconnection("loan").select('application_code', 'member_code','member_name','loan_amount','id')
         .then(success => {
           resolve(success);
         })
