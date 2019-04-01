@@ -293,7 +293,7 @@ exports.loanEditUser = async (payload) => {
 })
 }
 
-// loanEditUser
+// loanRejectUser
 exports.loanRejectUser = async (payload) => {
   dbconnection = undefined;
   var dbconnection = GetDBConnection();
@@ -313,7 +313,7 @@ exports.loanRejectUser = async (payload) => {
 })
 }
 
-// loanApprovalUser
+// loanDisbursemnetUser
 exports.loanDisbursementUser = async (payload) => {
   dbconnection = undefined;
   var dbconnection = GetDBConnection();
