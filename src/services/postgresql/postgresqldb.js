@@ -258,6 +258,9 @@ exports.loanApprovalUser = async (payload) => {
     var dbconnection = GetDBConnection();
 
     return new Promise(async (resolve, reject) => {
+
+   
+
     dbconnection("loan").select('id','application_code','member_code','member_name','loan_amount','approve_status','reject_status').orderBy('id','asc')
         .then(success => {
           resolve(success);
