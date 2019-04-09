@@ -12,7 +12,8 @@ const {
   loanApprovalUser,
   loanEditUser,
   loanRejectUser,
-  loanDisbursementUser
+  loanDisbursementUser,
+  loanDisbursementDbUser,
 
 } = require('./postgresqldb');
 
@@ -30,6 +31,7 @@ module.exports = {
   loanApprovalUser,
   loanEditUser,
   loanRejectUser,
-  loanDisbursementUser
+  loanDisbursementUser,
+  loanDisbursementDbUser
 };
 
